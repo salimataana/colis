@@ -20,7 +20,7 @@ public class Role {
     private String name;
     private String desciption;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "users_id")
     private User users;
 

@@ -17,22 +17,22 @@ import java.util.List;
 @Getter
 @Entity
 
-public class Colis {
+public class Packet {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private String name;
-    private String address_colis;
+    private String address_packet;
     private Date date_depart;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "users_id")
     private User users;
 
 
-    @OneToMany(mappedBy = "colis", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<EtatColis> etatcolis = new ArrayList<>();
+    @OneToMany(mappedBy = "packet", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PacketStatus> packetstatus = new ArrayList<>();
 
 
 }

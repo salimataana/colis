@@ -25,12 +25,12 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Role> Role = new ArrayList<>();
+    private List<Role> roles = new ArrayList<>();
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Colis> colis = new ArrayList<>();
+    private List<Packet> packets = new ArrayList<>();
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Geolocalisation> geolocalisation = new ArrayList<>();
+    private List<Geolocation> geolocations = new ArrayList<>();
 
 }

@@ -12,16 +12,15 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-public class EtatColis {
+public class Geolocation {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    private String name;
-    private String desciption;
+    private Double latitude;
+    private Double longitude;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "colis_id")
-    private Colis colis;
-
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private User users;
 }
