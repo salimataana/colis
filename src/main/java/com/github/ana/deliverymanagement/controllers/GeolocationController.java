@@ -1,7 +1,7 @@
-package com.livrcolis.colis.controllers;
+package com.github.ana.deliverymanagement.controllers;
 
-import com.livrcolis.colis.models.Geolocation;
-import com.livrcolis.colis.repository.GeolocationRepository;
+import com.github.ana.deliverymanagement.models.Geolocation;
+import com.github.ana.deliverymanagement.repository.GeolocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

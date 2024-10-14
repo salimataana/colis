@@ -8,11 +8,11 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.livraisoncolis</groupId>
-	<artifactId>colis</artifactId>
+	<groupId>com.github.ana</groupId>
+	<artifactId>deliverymanagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>colis</name>
-	<description>Une application de livraison de colis</description>
+	<name>deliverymanagement</name>
+	<description>A delivery app</description>
 	<url/>
 	<licenses>
 		<license/>

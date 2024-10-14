@@ -1,13 +1,13 @@
-package com.livrcolis.colis;
+package com.github.ana.deliverymanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ColisApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ColisApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

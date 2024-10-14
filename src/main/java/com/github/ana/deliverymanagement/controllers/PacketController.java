@@ -1,8 +1,8 @@
-package com.livrcolis.colis.controllers;
+package com.github.ana.deliverymanagement.controllers;
 
 
-import com.livrcolis.colis.models.Packet;
-import com.livrcolis.colis.repository.PacketRepository;
+import com.github.ana.deliverymanagement.models.Packet;
+import com.github.ana.deliverymanagement.repository.PacketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +38,7 @@ public class PacketController {
     }
     @RequestMapping(value="/packet/{id}",method= RequestMethod.GET)
     public void show(Integer id){
-       Optional<Packet> packet= packetRepository.findById(id);
+        Optional<Packet> packet= packetRepository.findById(id);
     }
     @RequestMapping(value="/packet",method= RequestMethod.PUT)
     public void update(){

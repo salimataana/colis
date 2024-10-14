@@ -1,7 +1,7 @@
-package com.livrcolis.colis.controllers;
+package com.github.ana.deliverymanagement.controllers;
 
-import com.livrcolis.colis.models.Role;
-import com.livrcolis.colis.repository.RoleRepository;
+import com.github.ana.deliverymanagement.models.Role;
+import com.github.ana.deliverymanagement.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
-package com.livrcolis.colis.repository;
+package com.github.ana.deliverymanagement.repository;
 
-import com.livrcolis.colis.models.Geolocation;
+import com.github.ana.deliverymanagement.models.Geolocation;
 import org.springframework.data.repository.CrudRepository;
 
 public interface GeolocationRepository extends CrudRepository<Geolocation, Integer> {

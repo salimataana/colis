@@ -1,4 +1,4 @@
-package com.livrcolis.colis.models;
+package com.github.ana.deliverymanagement.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

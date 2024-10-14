@@ -1,4 +1,4 @@
-package com.livrcolis.colis.models;
+package com.github.ana.deliverymanagement.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,16 +12,15 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-public class Role {
+public class Geolocation {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    private String name;
-    private String desciption;
+    private Double latitude;
+    private Double longitude;
 
     @ManyToOne
     @JoinColumn(name = "users_id")
     private User users;
-
 }
