@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of Packets</title>
+</head>
+<body>
+<h2>List of Packets</h2>
+
+<!-- Table to display the packets -->
+<table border="1">
+  <tr>
+    <th>Packet Name</th>
+    <th>Address</th>
+    <th>Departure Date</th>
+  </tr>
+  <!-- Loop through each packet to display its details -->
+  <tr th:each="packet : ${packets}">
+    <td th:text="${packet.name}"></td> <!-- Displays the name -->
+    <td th:text="${packet.address_packet}"></td> <!-- Displays the address -->
+    <td th:text="${#dates.format(packet.date_depart, 'yyyy-MM-dd')}"></td> <!-- Displays the date -->
+  </tr>
+</table>
+
+<!-- Link to create a new packet -->
+<p><a href="/packet/create">Create a New Packet</a></p>
+
+</body>
+</html>

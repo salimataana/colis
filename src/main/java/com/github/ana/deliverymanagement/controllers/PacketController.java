@@ -5,10 +5,13 @@ import com.github.ana.deliverymanagement.models.Packet;
 import com.github.ana.deliverymanagement.repository.PacketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -18,12 +21,16 @@ public class PacketController {
     private PacketRepository packetRepository;
 
     @RequestMapping(value="/packet",method= RequestMethod.GET)
-    public String index() {
-        return "index";
+    public String index(Model model) {
+        List<Packet> packets = new ArrayList<>();
+        packetRepository.findAll().forEach(packets::add);
+        model.addAttribute("packets", packets);
+        return "indexPacket";
 
     }
     @RequestMapping(value="/packet/create",method= RequestMethod.GET)
-    public String create(){
+    public String create(Model model){
+        model.addAttribute("packet", new Packet()); // A
         return "createPacket";
     }
 
@@ -37,8 +44,9 @@ public class PacketController {
         return "redirect:/packet";
     }
     @RequestMapping(value="/packet/{id}",method= RequestMethod.GET)
-    public void show(Integer id){
+    public String show(Integer id){
         Optional<Packet> packet= packetRepository.findById(id);
+        return "showPacket";
     }
     @RequestMapping(value="/packet",method= RequestMethod.PUT)
     public void update(){

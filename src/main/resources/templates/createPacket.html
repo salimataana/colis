@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Packet</title>
 </head>
 <body>
+<h2>Create a Packet</h2>
+
+<!-- Form to create a packet -->
+<form action="/packet" method="post">
+    <!-- Field for packet name -->
+    <label for="name">Packet Name:</label><br>
+    <input type="text" id="name" name="name" required placeholder="Enter packet name"><br><br>
+
+    <!-- Field for packet address -->
+    <label for="address_packet">Packet Address:</label><br>
+    <input type="text" id="address_packet" name="address_packet" required placeholder="Enter packet address"><br><br>
+
+    <!-- Field for departure date -->
+    <label for="date_depart">Departure Date of packet:</label><br>
+    <input type="date" id="date_depart" name="date_depart" required><br><br>
+
+    <!-- Button to submit the form -->
+    <input type="submit" value="Create Packet">
+</form>
 
 </body>
 </html>
