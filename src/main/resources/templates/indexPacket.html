@@ -8,21 +8,6 @@
 <body>
 <h2>List of Packets</h2>
 
-<!-- Table to display the packets -->
-<table border="1">
-  <tr>
-    <th>Packet Name</th>
-    <th>Address</th>
-    <th>Departure Date</th>
-  </tr>
-  <!-- Loop through each packet to display its details -->
-  <tr th:each="packet : ${packets}">
-    <td th:text="${packet.name}"></td> <!-- Displays the name -->
-    <td th:text="${packet.address_packet}"></td> <!-- Displays the address -->
-    <td th:text="${#dates.format(packet.date_depart, 'yyyy-MM-dd')}"></td> <!-- Displays the date -->
-  </tr>
-</table>
-
 <!-- Link to create a new packet -->
 <p><a href="/packet/create">Create a New Packet</a></p>
 
