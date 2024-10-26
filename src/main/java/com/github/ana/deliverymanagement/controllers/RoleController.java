@@ -3,10 +3,13 @@ package com.github.ana.deliverymanagement.controllers;
 import com.github.ana.deliverymanagement.models.Role;
 import com.github.ana.deliverymanagement.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -27,10 +30,12 @@ public class RoleController {
         }
 
         @RequestMapping(value="/role",method= RequestMethod.POST)
-        public String store (@RequestParam("name") String name, @RequestParam("description") String description){
-           Role role = new Role();
+        public String store (@RequestParam("name") String name, @RequestParam("description") String description,
+                             @RequestParam("createdAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date createdAt){
+            Role role = new Role();
             role.setName(name);
-            role.setDesciption(description);;
+            role.setDescription(description);
+            role.setCreatedAt(createdAt);
             roleRepository.save(role);
             return "redirect:/role";
         }

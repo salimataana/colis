@@ -1,11 +1,9 @@
 package com.github.ana.deliverymanagement.models;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,6 +23,9 @@ public class Packet {
     private String name;
     private String address_packet;
     private Date date_depart;
+    private Date date_arrival;
+    private Double weight;
+    private Date createdAt;
 
     @ManyToOne
     @JoinColumn(name = "users_id")

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,7 +20,8 @@ public class Role {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private String name;
-    private String desciption;
+    private String description;
+    private Date createdAt;
 
     @ManyToOne
     @JoinColumn(name = "users_id")

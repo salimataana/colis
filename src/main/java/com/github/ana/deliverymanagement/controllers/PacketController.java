@@ -1,6 +1,4 @@
 package com.github.ana.deliverymanagement.controllers;
-
-
 import com.github.ana.deliverymanagement.models.Packet;
 import com.github.ana.deliverymanagement.repository.PacketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,19 +29,24 @@ public class PacketController {
 
     }
     @RequestMapping(value="/packet/create",method= RequestMethod.GET)
-    public String create(Model model){
-        //model.addAttribute("packet", new Packet()); // A
+    public String create(){
         return "createPacket";
     }
 
     @RequestMapping(value="/packet",method= RequestMethod.POST)
     public ModelAndView store (@RequestParam("name") String name, @RequestParam("address_packet") String address_packet,
-                               @RequestParam("date_depart") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date_depart){
+                               @RequestParam("date_depart") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date_depart,
+                               @RequestParam("date_arrival") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date_arrival,
+                               @RequestParam("weight") Double weight,
+                               @RequestParam("createdAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date createdAt){
         System.out.println("je suis dans store");
         Packet packet = new Packet();
         packet.setName(name);
         packet.setAddress_packet(address_packet);
         packet.setDate_depart(date_depart);
+        packet.setDate_arrival(date_arrival);
+        packet.setWeight(weight);
+        packet.setCreatedAt(createdAt);
         packetRepository.save(packet);
         return new ModelAndView("redirect:/packet");
     }

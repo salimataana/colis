@@ -1,10 +1,10 @@
 package com.github.ana.deliverymanagement.models;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.Date;
 
 
 @AllArgsConstructor
@@ -19,6 +19,7 @@ public class PacketStatus {
     private Integer id;
     private String name;
     private String desciption;
+    private Date createdAt;
 
     @ManyToOne
     @JoinColumn(name = "packet_id")

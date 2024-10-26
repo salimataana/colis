@@ -1,13 +1,13 @@
 package com.github.ana.deliverymanagement.controllers;
-
-
 import com.github.ana.deliverymanagement.models.PacketStatus;
 import com.github.ana.deliverymanagement.repository.PacketStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.util.Date;
 
 
 @Controller
@@ -29,10 +29,12 @@ public class PacketStatusController {
     }
 
     @RequestMapping(value="/packetstatus",method= RequestMethod.POST)
-    public String store (@RequestParam("name") String name, @RequestParam("description") String description){
-       PacketStatus packetstatus = new PacketStatus();
+    public String store (@RequestParam("name") String name, @RequestParam("description") String description,
+                         @RequestParam("createdAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date createdAt){
+        PacketStatus packetstatus = new PacketStatus();
         packetstatus.setName(name);
-        packetstatus.setDesciption(description);;
+        packetstatus.setDesciption(description);
+        packetstatus.setCreatedAt(createdAt);
         packetstatusRepository.save(packetstatus);
         return "redirect:/packetstatus";
     }

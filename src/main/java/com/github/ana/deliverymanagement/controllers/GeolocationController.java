@@ -3,10 +3,13 @@ package com.github.ana.deliverymanagement.controllers;
 import com.github.ana.deliverymanagement.models.Geolocation;
 import com.github.ana.deliverymanagement.repository.GeolocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Date;
 import java.util.Optional;
 
 
@@ -29,10 +32,14 @@ public class GeolocationController {
     }
 
     @RequestMapping(value="/geolocation",method= RequestMethod.POST)
-    public String store (@RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude){
+    public String store (@RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude,
+                         @RequestParam("description") String description,
+                         @RequestParam("createdAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date createdAt){
         Geolocation geolocation = new Geolocation();
         geolocation.setLatitude(latitude);
-        geolocation.setLongitude(longitude);;
+        geolocation.setLongitude(longitude);
+        geolocation.setDescription(description);
+        geolocation.setCreatedAt(createdAt);
         geolocationRepository.save(geolocation);
         return "redirect:/geolocation";
     }

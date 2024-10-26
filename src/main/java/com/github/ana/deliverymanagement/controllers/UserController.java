@@ -3,10 +3,13 @@ package com.github.ana.deliverymanagement.controllers;
 import com.github.ana.deliverymanagement.models.User;
 import com.github.ana.deliverymanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Date;
 import java.util.Optional;
 
 
@@ -27,10 +30,16 @@ public class UserController {
     }
 
     @RequestMapping(value="/users",method= RequestMethod.POST)
-    public String store (@RequestParam("name") String name, @RequestParam("email") String email){
+    public String store (@RequestParam("name") String name, @RequestParam("email") String email,
+                         @RequestParam("address_user") String address_user,
+                         @RequestParam("phoneNumber") String phoneNumber,
+                         @RequestParam("createdAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date createdAt){
         User users = new User();
         users.setName(name);
         users.setEmail(email);
+        users.setAddress_user(address_user);
+        users.setPhoneNumber(phoneNumber);
+        users.setCreatedAt(createdAt);
         usersRepository.save(users);
         return "redirect:/users";
     }
