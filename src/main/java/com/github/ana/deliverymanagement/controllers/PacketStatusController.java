@@ -29,12 +29,10 @@ public class PacketStatusController {
     }
 
     @RequestMapping(value="/packetstatus",method= RequestMethod.POST)
-    public String store (@RequestParam("name") String name, @RequestParam("description") String description,
-                         @RequestParam("createdAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date createdAt){
+    public String store (@RequestParam("name") String name, @RequestParam("description") String description){
         PacketStatus packetstatus = new PacketStatus();
         packetstatus.setName(name);
         packetstatus.setDesciption(description);
-        packetstatus.setCreatedAt(createdAt);
         packetstatusRepository.save(packetstatus);
         return "redirect:/packetstatus";
     }

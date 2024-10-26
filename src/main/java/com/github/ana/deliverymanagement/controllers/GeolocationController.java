@@ -33,13 +33,11 @@ public class GeolocationController {
 
     @RequestMapping(value="/geolocation",method= RequestMethod.POST)
     public String store (@RequestParam("latitude") Double latitude, @RequestParam("longitude") Double longitude,
-                         @RequestParam("description") String description,
-                         @RequestParam("createdAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date createdAt){
+                         @RequestParam("description") String description){
         Geolocation geolocation = new Geolocation();
         geolocation.setLatitude(latitude);
         geolocation.setLongitude(longitude);
         geolocation.setDescription(description);
-        geolocation.setCreatedAt(createdAt);
         geolocationRepository.save(geolocation);
         return "redirect:/geolocation";
     }

@@ -32,14 +32,12 @@ public class UserController {
     @RequestMapping(value="/users",method= RequestMethod.POST)
     public String store (@RequestParam("name") String name, @RequestParam("email") String email,
                          @RequestParam("address_user") String address_user,
-                         @RequestParam("phoneNumber") String phoneNumber,
-                         @RequestParam("createdAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date createdAt){
+                         @RequestParam("phoneNumber") String phoneNumber){
         User users = new User();
         users.setName(name);
         users.setEmail(email);
         users.setAddress_user(address_user);
         users.setPhoneNumber(phoneNumber);
-        users.setCreatedAt(createdAt);
         usersRepository.save(users);
         return "redirect:/users";
     }

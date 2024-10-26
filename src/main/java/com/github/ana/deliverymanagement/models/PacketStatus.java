@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Date;
-
+import org.springframework.data.annotation.CreatedDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,6 +19,10 @@ public class PacketStatus {
     private Integer id;
     private String name;
     private String desciption;
+
+
+    @CreatedDate
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
 
     @ManyToOne

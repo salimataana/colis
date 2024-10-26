@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,6 +26,10 @@ public class Packet {
     private Date date_depart;
     private Date date_arrival;
     private Double weight;
+
+
+    @CreatedDate
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
 
     @ManyToOne

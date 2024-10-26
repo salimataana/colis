@@ -30,12 +30,10 @@ public class RoleController {
         }
 
         @RequestMapping(value="/role",method= RequestMethod.POST)
-        public String store (@RequestParam("name") String name, @RequestParam("description") String description,
-                             @RequestParam("createdAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date createdAt){
+        public String store (@RequestParam("name") String name, @RequestParam("description") String description){
             Role role = new Role();
             role.setName(name);
             role.setDescription(description);
-            role.setCreatedAt(createdAt);
             roleRepository.save(role);
             return "redirect:/role";
         }

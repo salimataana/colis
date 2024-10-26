@@ -37,8 +37,7 @@ public class PacketController {
     public ModelAndView store (@RequestParam("name") String name, @RequestParam("address_packet") String address_packet,
                                @RequestParam("date_depart") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date_depart,
                                @RequestParam("date_arrival") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date_arrival,
-                               @RequestParam("weight") Double weight,
-                               @RequestParam("createdAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date createdAt){
+                               @RequestParam("weight") Double weight){
         System.out.println("je suis dans store");
         Packet packet = new Packet();
         packet.setName(name);
@@ -46,7 +45,6 @@ public class PacketController {
         packet.setDate_depart(date_depart);
         packet.setDate_arrival(date_arrival);
         packet.setWeight(weight);
-        packet.setCreatedAt(createdAt);
         packetRepository.save(packet);
         return new ModelAndView("redirect:/packet");
     }
