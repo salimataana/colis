@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +8,27 @@
 <body>
 <h2>Create a User</h2>
 
-<!-- Form to create a user-->
-<form action="/users" method="post">
-    <!-- Field for user name -->
-    <label for="name">User Name:</label><br>
-    <input type="text" id="name" name="name" required placeholder="Enter name"><br><br>
+        <!-- Form to create a user-->
+        <form action="#" th:action="@{/packet}" th:object="${packet}" method="post">
 
-    <!-- Field for user email -->
-    <label for="email">User Email:</label><br>
-    <input type="email" id="email" name="email" required placeholder="Enter email"><br><br>
+        <!-- Field for username -->
+        <label for="name">User Name:</label><br>
+        <input type="text" id="name" name="name" required placeholder="Enter name"><br><br>
 
-    <!-- Button to submit the form -->
-    <input type="submit" value="Create">
+        <!-- Field for user email -->
+        <label for="email">User Email:</label><br>
+        <input type="email" id="email" name="email" required placeholder="Enter email"><br><br>
+
+        <!-- Field for user address_user -->
+        <label for="address_user">User address_user:</label><br>
+        <input type="text" id="address_user" name="address_user" required placeholder="Enter address_user"><br><br>
+
+            <!-- Field for user PhoneNumber -->
+            <label for="PhoneNumber">User PhoneNumber:</label><br>
+            <input type="text" id="PhoneNumber" name="PhoneNumber" required placeholder="Enter PhoneNumber"><br><br>
+
+            <!-- Button to submit the form -->
+        <input type="submit" value="Create User">
 </form>
 
 </body>

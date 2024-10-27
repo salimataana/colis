@@ -28,9 +28,9 @@ public class Packet {
     private Double weight;
 
 
-    @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Date createdAt;
+   // @CreatedDate
+   // @Column(name = "created_at", nullable = false, updatable = false)
+   // private Date createdAt;
 
     @ManyToOne
     @JoinColumn(name = "users_id")

@@ -11,9 +11,14 @@
 
 <!-- Form to create a packet -->
 <form action="#" th:action="@{/packet}" th:object="${packet}" method="post">
+
     <!-- Field for packet name -->
     <label for="name">Packet Name:</label><br>
     <input type="text" id="name" name="name" required placeholder="Enter packet name"><br><br>
+
+    <!-- Field for weight -->
+    <label for="weight">Weight of packet:</label><br>
+    <input type="number" id="weight" name="weight" required placeholder="Enter packet weight" step="0.01" min="0"><br><br>
 
     <!-- Field for packet address -->
     <label for="address_packet">Packet Address:</label><br>
@@ -22,6 +27,10 @@
     <!-- Field for departure date -->
     <label for="date_depart">Departure Date of packet:</label><br>
     <input type="date" id="date_depart" name="date_depart" required><br><br>
+
+    <!-- Field for arrival date -->
+    <label for="date_arrival">Arrival Date of packet:</label><br>
+    <input type="date" id="date_arrival" name="date_arrival" required><br><br>
 
     <!-- Button to submit the form -->
     <input type="submit" value="Create Packet">

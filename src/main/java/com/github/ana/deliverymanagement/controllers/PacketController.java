@@ -29,22 +29,22 @@ public class PacketController {
 
     }
     @RequestMapping(value="/packet/create",method= RequestMethod.GET)
-    public String create(){
+    public String create(Model model){
         return "createPacket";
     }
 
     @RequestMapping(value="/packet",method= RequestMethod.POST)
     public ModelAndView store (@RequestParam("name") String name, @RequestParam("address_packet") String address_packet,
+                               @RequestParam("weight") Double weight,
                                @RequestParam("date_depart") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date_depart,
-                               @RequestParam("date_arrival") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date_arrival,
-                               @RequestParam("weight") Double weight){
+                               @RequestParam("date_arrival") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date_arrival){
         System.out.println("je suis dans store");
         Packet packet = new Packet();
         packet.setName(name);
+        packet.setWeight(weight);
         packet.setAddress_packet(address_packet);
         packet.setDate_depart(date_depart);
         packet.setDate_arrival(date_arrival);
-        packet.setWeight(weight);
         packetRepository.save(packet);
         return new ModelAndView("redirect:/packet");
     }

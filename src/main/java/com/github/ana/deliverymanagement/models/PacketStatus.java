@@ -18,12 +18,12 @@ public class PacketStatus {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private String name;
-    private String desciption;
+    private String description;
 
 
-    @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Date createdAt;
+    //@CreatedDate
+   // @Column(name = "created_at", nullable = false, updatable = false)
+   // private Date createdAt;
 
     @ManyToOne
     @JoinColumn(name = "packet_id")

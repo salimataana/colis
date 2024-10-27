@@ -1,13 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>List of Packets</title>
+  <title>Packet List</title>
 </head>
 <body>
-<h2>List of Packets</h2>
+<h2>Packet List</h2>
 
+
+<!-- Table to display the list of packets -->
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Weight</th>
+    <th>Address</th>
+    <th>Departure Date</th>
+    <th>Arrival Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="packet : ${packets}">
+    <td th:text="${packet.id}"></td>
+    <td th:text="${packet.name}"></td>
+    <td th:text="${packet.weight}"></td>
+    <td th:text="${packet.address_packet}"></td>
+    <td th:text="${#dates.format(packet.date_depart, 'yyyy-MM-dd')}"></td>
+    <td th:text="${#dates.format(packet.date_arrival, 'yyyy-MM-dd')}"></td>
+  </tr>
+  </tbody>
+</table>
 <!-- Link to create a new packet -->
 <p><a href="/packet/create">Create a New Packet</a></p>
 

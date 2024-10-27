@@ -28,9 +28,9 @@ public class User {
     private String phoneNumber;
 
 
-    @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Date createdAt;
+    //@CreatedDate
+   // @Column(name = "created_at", nullable = false, updatable = false)
+    //private Date createdAt;
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Role> roles = new ArrayList<>();
