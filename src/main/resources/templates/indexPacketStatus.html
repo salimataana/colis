@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of PacketStatus</title>
+</head>
+<body>
+<h2>List of PacketStatus</h2>
+
+
+<!-- Table to display the list of PacketStatus -->
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>name</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="packetstatus : ${packetstatus}">
+    <td th:text="${packetstatus.id}"></td>
+    <td th:text="${packetstatus.name}"></td>
+    <td th:text="${packetstatus.description}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Link to create a new geolocation -->
+<p><a href="/packetstatus/create">Create a New PacketStatus</a></p>
+
+</body>
+</html>
