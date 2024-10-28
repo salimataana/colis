@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Package - Delivery Service</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+         footer {
+            background-color: #343a40;
+            color: white;
+            padding: 5px 0;
+            margin-top: auto;
+        }
+        .footer-content {
+            margin: 5px 0;
+        }
+        .footer-content h3 {
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 3px;
+        }
+        .list {
+            list-style: none;
+            padding: 0;
+        }
+        .list li {
+            margin: 5px 0;
+        }
+        .bottom-bar {
+            text-align: center;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<header class="bg-light text-center py-4">
+    <h1>Track Your Packet</h1>
+</header>
+
+<main class="container my-4">
+    <h2 class="text-center">Tracking Details</h2>
+    <div id="trackingResult" class="mt-4">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Tracking Number</th>
+                <th>Date of Departure</th>
+                <th>Date of Transit</th>
+                <th>Date of Arrival</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="trackingNumber"></td>
+                <td id="departureDate"></td>
+                <td id="transitDate"></td>
+                <td id="arrivalDate"></td>
+                <td id="status"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 footer-content">
+                <h3>Contact Us</h3>
+                <p>Email: ana.salimata.sanou@gmail.com</p>
+                <p>Phone: 0678363319</p>
+                <p>Address: Rue 22 Basse des Rives</p>
+            </div>
+            <div class="col-md-4 footer-content">
+                <h3>Quick Links</h3>
+                <ul class="list">
+                    <li><a href="#" class="text-white">Home</a></li>
+                    <li><a href="#" class="text-white">About</a></li>
+                    <li><a href="#" class="text-white">Services</a></li>
+                    <li><a href="#" class="text-white">Products</a></li>
+                    <li><a href="#" class="text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 footer-content">
+                <h3>Follow Us</h3>
+                <ul class="list">
+                    <li><a href="#" class="text-white"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" class="text-white"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-bar">
+        <p>&copy; 2024 Delivery Inc. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

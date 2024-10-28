@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML Geolocation</title>
+</head>
+<body>
+<h1>HTML Geolocation</h1>
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<!-- Formulaire pour envoyer les coordonnées -->
+<form id="geolocationForm" method="POST" action="/geolocation">
+  <label for="latitude">Latitude:</label>
+  <input type="text" name="latitude" id="latitude" readonly>
+
+  <label for="longitude">Longitude:</label>
+  <input type="text" name="longitude" id="longitude" readonly>
+
+  <label for="description">Description:</label>
+  <input type="text" name="description" id="description" placeholder="Enter a description">
+
+  <input type="submit" value="Submit Coordinates">
+</form>
+
+<script>
+  const x = document.getElementById("demo");
+
+  function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+  }
+
+  function showPosition(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      x.innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
+
+      // Fill in the form fields with contact details
+      document.getElementById("latitude").value = latitude;
+      document.getElementById("longitude").value = longitude;
+
+      // Show Form
+      document.getElementById("geolocationForm").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
