@@ -1,10 +1,14 @@
 package com.github.ana.deliverymanagement.controllers;
+import com.github.ana.deliverymanagement.models.Geolocation;
 import com.github.ana.deliverymanagement.models.Packet;
 import com.github.ana.deliverymanagement.repository.PacketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,10 +57,24 @@ public class PacketController {
         Optional<Packet> packet= packetRepository.findById(id);
         return "showPacket";
     }
-    @RequestMapping(value="/packet",method= RequestMethod.PUT)
-    public void update(){
 
+    @RequestMapping(value="/packet",method= RequestMethod.PUT)
+    public ResponseEntity<String> update(@RequestParam Integer id, @RequestBody Packet updatedPacket) {
+        Optional<Packet> existingPacketOpt = packetRepository.findById(id);
+        if (existingPacketOpt.isPresent()) {
+            Packet existingPacket = existingPacketOpt.get();
+            existingPacket.setName(updatedPacket.getName());
+            existingPacket.setAddress_packet(updatedPacket.getAddress_packet());
+            existingPacket.setDate_depart(updatedPacket.getDate_depart());
+            existingPacket.setDate_arrival(updatedPacket.getDate_arrival());
+            existingPacket.setWeight(updatedPacket.getWeight());
+            packetRepository.save(existingPacket);
+            return ResponseEntity.ok("Packet updated successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
+
     @RequestMapping(value="/packet",method= RequestMethod.DELETE)
     public String delete(Integer id){
         packetRepository.deleteById(id);

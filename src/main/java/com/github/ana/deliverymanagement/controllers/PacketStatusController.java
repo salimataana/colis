@@ -1,9 +1,13 @@
 package com.github.ana.deliverymanagement.controllers;
+import com.github.ana.deliverymanagement.models.Packet;
 import com.github.ana.deliverymanagement.models.PacketStatus;
 import com.github.ana.deliverymanagement.repository.PacketStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,8 +53,17 @@ public class PacketStatusController {
 
     }
     @RequestMapping(value="/packetstatus",method= RequestMethod.PUT)
-    public void update(){
-
+    public ResponseEntity<String> update(@RequestParam Integer id, @RequestBody PacketStatus updatedPacketStatus) {
+        Optional<PacketStatus> existingPacketStatusOpt = packetstatusRepository.findById(id);
+        if (existingPacketStatusOpt.isPresent()) {
+            PacketStatus existingPacketStatus = existingPacketStatusOpt.get();
+            existingPacketStatus.setName(updatedPacketStatus.getName());
+            existingPacketStatus.setDescription(updatedPacketStatus.getDescription());
+            packetstatusRepository.save(existingPacketStatus);
+            return ResponseEntity.ok("PacketStatus updated successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
     @RequestMapping(value="/packetstatus",method= RequestMethod.DELETE)
     public String delete(Integer id){

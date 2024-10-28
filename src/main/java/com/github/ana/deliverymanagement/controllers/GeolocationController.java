@@ -2,8 +2,11 @@ package com.github.ana.deliverymanagement.controllers;
 import com.github.ana.deliverymanagement.models.Geolocation;
 import com.github.ana.deliverymanagement.repository.GeolocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +33,7 @@ public class GeolocationController {
     }
     @RequestMapping(value="/geolocation/create",method= RequestMethod.GET)
     public String create(Model model){
-        return "createGeolocation";
+        return "geolocationdelivery";
     }
 
     @RequestMapping(value="/geolocation",method= RequestMethod.POST)
@@ -47,13 +50,26 @@ public class GeolocationController {
     public void show(Integer id){
         Optional<Geolocation> geolocation= geolocationRepository.findById(id);
     }
-    @RequestMapping(value="/geolocation",method= RequestMethod.PUT)
-    public void update(){
 
-    }
+    @RequestMapping(value="/geolocation",method= RequestMethod.PUT)
+        public ResponseEntity<String> update(@RequestParam Integer id, @RequestBody Geolocation updatedGeolocation) {
+            Optional<Geolocation> existingGeolocationOpt = geolocationRepository.findById(id);
+            if (existingGeolocationOpt.isPresent()) {
+                Geolocation existingGeolocation = existingGeolocationOpt.get();
+                existingGeolocation.setLatitude(updatedGeolocation.getLatitude());
+                existingGeolocation.setLongitude(updatedGeolocation.getLongitude());
+                existingGeolocation.setDescription(updatedGeolocation.getDescription());
+                geolocationRepository.save(existingGeolocation);
+                return ResponseEntity.ok("Geolocation updated successfully.");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+        }
+
     @RequestMapping(value="/geolocation",method= RequestMethod.DELETE)
     public String delete(Integer id){
         geolocationRepository.deleteById(id);
         return "redirect:/geolocation";
     }
 }
+

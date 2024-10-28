@@ -3,8 +3,11 @@ import com.github.ana.deliverymanagement.models.Role;
 import com.github.ana.deliverymanagement.models.User;
 import com.github.ana.deliverymanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,8 +54,19 @@ public class UserController {
 
     }
     @RequestMapping(value="/users",method= RequestMethod.PUT)
-    public void update(){
-
+    public ResponseEntity<String> update(@RequestParam Integer id, @RequestBody User updatedUser) {
+        Optional<User> existingUserOpt = usersRepository.findById(id);
+        if (existingUserOpt.isPresent()) {
+            User existingUser= existingUserOpt.get();
+            existingUser.setName(updatedUser.getName());
+            existingUser.setEmail(updatedUser.getEmail());
+            existingUser.setAddress_user(updatedUser.getAddress_user());
+            existingUser.setPhoneNumber(updatedUser.getPhoneNumber());
+            usersRepository.save(existingUser);
+            return ResponseEntity.ok("User updated successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
     @RequestMapping(value="/users",method= RequestMethod.DELETE)
     public String delete(Integer id){
