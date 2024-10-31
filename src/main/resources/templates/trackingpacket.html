@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,12 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+        }
+        header {
+            background-color:  #6c757d;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
         }
         main {
             flex: 1;
@@ -43,9 +49,29 @@
 </head>
 <body>
 
-<header class="bg-light text-center py-4">
-    <h1>Track Your Packet</h1>
+<header>
+<h1>Track your Packet</h1>
+<nav>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/home}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/packet/create}">Create a Packet</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/trackingpacket}">Track a Packet</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/login}">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/register}">Create an Account</a>
+        </li>
+    </ul>
+</nav>
 </header>
+
 
 <main class="container my-4">
     <h2 class="text-center">Tracking Details</h2>
@@ -54,19 +80,17 @@
             <thead>
             <tr>
                 <th>Tracking Number</th>
-                <th>Date of Departure</th>
-                <th>Date of Transit</th>
-                <th>Date of Arrival</th>
-                <th>Status</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date </th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td id="trackingNumber"></td>
-                <td id="departureDate"></td>
-                <td id="transitDate"></td>
-                <td id="arrivalDate"></td>
-                <td id="status"></td>
+                <td id="name"></td>
+                <td id="description"></td>
+                <td id="Date"></td>
             </tr>
             </tbody>
         </table>

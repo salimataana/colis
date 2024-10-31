@@ -1,40 +1,87 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Packet List</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+        background-color: #f8f9fa;
+        padding: 0;
+    }
+    header {
+            background-color:  #6c757d;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .table {
+        margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-<h2>Packet List</h2>
 
+<header>
+  <h1>Welcome to our packet delivery service</h1>
+  <nav>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link text-white" th:href="@{/home}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" th:href="@{/packet/create}">Create a Packet</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" th:href="@{/trackingpacket}">Track a Packet</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" th:href="@{/login}">Authentification</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" th:href="@{/register}">Create an Account</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 
-<!-- Table to display the list of packets -->
-<table border="1">
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Weight</th>
-    <th>Address</th>
-    <th>Departure Date</th>
-    <th>Arrival Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="packet : ${packets}">
-    <td th:text="${packet.id}"></td>
-    <td th:text="${packet.name}"></td>
-    <td th:text="${packet.weight}"></td>
-    <td th:text="${packet.address_packet}"></td>
-    <td th:text="${#dates.format(packet.date_depart, 'yyyy-MM-dd')}"></td>
-    <td th:text="${#dates.format(packet.date_arrival, 'yyyy-MM-dd')}"></td>
-  </tr>
-  </tbody>
-</table>
-<!-- Link to create a new packet -->
-<p><a href="/packet/create">Create a New Packet</a></p>
+<div class="container">
+  <h2>Packet List</h2>
+
+  <!-- Table to display the list of packets -->
+  <table class="table table-bordered table-striped">
+    <thead class="custom-thead">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Weight</th>
+      <th>Address</th>
+      <th>Departure Date</th>
+      <th>Arrival Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="packet : ${packets}">
+      <td th:text="${packet.id}"></td>
+      <td th:text="${packet.name}"></td>
+      <td th:text="${packet.weight}"></td>
+      <td th:text="${packet.address_packet}"></td>
+      <td th:text="${#dates.format(packet.date_depart, 'yyyy-MM-dd')}"></td>
+      <td th:text="${#dates.format(packet.date_arrival, 'yyyy-MM-dd')}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Link to create a new packet -->
+  <p class="text-center">
+    <a href="/packet/create" class="btn btn-secondary">Create a New Packet</a>
+  </p>
+</div>
 
 </body>
 </html>

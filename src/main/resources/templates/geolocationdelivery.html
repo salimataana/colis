@@ -1,17 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>HTML Geolocation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Geolocation</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+        background-color: #f4f4f4;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        color: #333;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #6c757d;
+    }
+    button {
+        margin-bottom: 20px;
+    }
+    #geolocationForm {
+        display: none; /* Masqué par défaut */
+        background-color: #ffffff; /* Fond blanc pour le formulaire */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"], input[type="submit"] {
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+    input[type="submit"] {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #6c757d;
+    }
+    #demo {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 1.2em;
+    }
+  </style>
 </head>
 <body>
-<h1>HTML Geolocation</h1>
-<p>Click the button to get your coordinates.</p>
 
-<button onclick="getLocation()">Try It</button>
+<h1>GET Geolocation</h1>
+<p class="text-center">Click the button to get your coordinates.</p>
+
+<div class="text-center">
+  <button class="btn btn-secondary" onclick="getLocation()">Try It</button>
+</div>
 
 <p id="demo"></p>
 
-<!-- Formulaire pour envoyer les coordonnées -->
 <form id="geolocationForm" method="POST" action="/geolocation">
   <label for="latitude">Latitude:</label>
   <input type="text" name="latitude" id="latitude" readonly>
@@ -42,11 +95,11 @@
 
       x.innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
 
-      // Fill in the form fields with contact details
+      // Remplir les champs du formulaire avec les coordonnées
       document.getElementById("latitude").value = latitude;
       document.getElementById("longitude").value = longitude;
 
-      // Show Form
+      // Afficher le formulaire
       document.getElementById("geolocationForm").style.display = "block";
   }
 </script>

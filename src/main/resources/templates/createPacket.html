@@ -1,40 +1,92 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Packet</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 0;
+        }
+         header {
+            background-color:  #6c757d;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-<h2>Create a Packet</h2>
+<header>
+    <h1>Creation of Packet</h1>
+    <nav>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link text-white" th:href="@{/home}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" th:href="@{/packet/create}">Create a Packet</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" th:href="@{/trackingpacket}">Track a Packet</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" th:href="@{/login}">Authentification</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" th:href="@{/register}">Create an Account</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <h2>Create a Packet</h2>
 
-<!-- Form to create a packet -->
-<form action="#" th:action="@{/packet}" th:object="${packet}" method="post">
+    <!-- Form to create a packet -->
+    <form action="#" th:action="@{/packet}" th:object="${packet}" method="post">
 
-    <!-- Field for packet name -->
-    <label for="name">Packet Name:</label><br>
-    <input type="text" id="name" name="name" required placeholder="Enter packet name"><br><br>
+        <!-- Field for packet name -->
+        <div class="form-group">
+            <label for="name">Packet Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required placeholder="Enter packet name">
+        </div>
 
-    <!-- Field for weight -->
-    <label for="weight">Weight of packet:</label><br>
-    <input type="number" id="weight" name="weight" required placeholder="Enter packet weight" step="0.01" min="0"><br><br>
+        <!-- Field for weight -->
+        <div class="form-group">
+            <label for="weight">Weight of packet:</label>
+            <input type="number" class="form-control" id="weight" name="weight" required placeholder="Enter packet weight" step="0.01" min="0">
+        </div>
 
-    <!-- Field for packet address -->
-    <label for="address_packet">Packet Address:</label><br>
-    <input type="text" id="address_packet" name="address_packet" required placeholder="Enter packet address"><br><br>
+        <!-- Field for packet address -->
+        <div class="form-group">
+            <label for="address_packet">Packet Address:</label>
+            <input type="text" class="form-control" id="address_packet" name="address_packet" required placeholder="Enter packet address">
+        </div>
 
-    <!-- Field for departure date -->
-    <label for="date_depart">Departure Date of packet:</label><br>
-    <input type="date" id="date_depart" name="date_depart" required><br><br>
+        <!-- Field for departure date -->
+        <div class="form-group">
+            <label for="date_depart">Departure Date of packet:</label>
+            <input type="date" class="form-control" id="date_depart" name="date_depart" required>
+        </div>
 
-    <!-- Field for arrival date -->
-    <label for="date_arrival">Arrival Date of packet:</label><br>
-    <input type="date" id="date_arrival" name="date_arrival" required><br><br>
-
-    <!-- Button to submit the form -->
-    <input type="submit" value="Create Packet">
-</form>
+        <!-- Button to submit the form -->
+        <button type="submit" class="btn btn-secondary btn-block">Create Packet</button>
+    </form>
+</div>
 
 </body>
 </html>
