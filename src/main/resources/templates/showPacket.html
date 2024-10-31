@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packet Details</title>
+</head>
+<body>
+<h2>Packet Details</h2>
+
+<!-- Table to display the details of the packet -->
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Weight</th>
+    <th>Address</th>
+    <th>Departure Date</th>
+    <th>Arrival Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td th:text="${packet.id}"></td>
+    <td th:text="${packet.name}"></td>
+    <td th:text="${packet.weight}"></td>
+    <td th:text="${packet.address_packet}"></td>
+    <td th:text="${#dates.format(packet.date_depart, 'yyyy-MM-dd')}"></td>
+    <td th:text="${#dates.format(packet.date_arrival, 'yyyy-MM-dd')}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Link to go back to the list of packets -->
+<p><a href="/packet">Back to List</a></p>
+
+</body>
+</html>
