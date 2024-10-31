@@ -11,11 +11,36 @@ NB : All tasks about this project are done by me.
 ### october(no finish)
 Models
 
+-Packet
+-PacketStatus
+-User
+-Geolocation
+-Role
+
+### october (no finish)
+Controllers
+
+
+-DeliveryManagementController
+-Packet
+-PacketStatus
+-User
+-Geolocation
+-Role
+
+
 ###  26 october 2024(no finish)
 Updated all controllers
 
 ###  october (no finish)
 Repository 
+
+-PacketRepository
+-PacketStatusRepository
+-UserRepository
+-GeolocationRepository
+-RoleRepository
+
 
 ## Templates
 
@@ -43,3 +68,14 @@ in all controllers update method update : 1h 30
 creation of the home page : 45 minutes
 creation of the geolocationdelivery page : 30 minutes
 creation of the trackingpacket page : 30 minutes
+
+### 29 october 2024
+create view showPacket : 30 minutes 
+update view createPacket
+update view geolocationdelivery
+update view home
+
+### 30 october 2024
+update controllers
+update view of the templates
+
