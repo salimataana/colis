@@ -54,7 +54,7 @@ public class PacketStatusController {
     }
     @RequestMapping(value="/packetstatus",method= RequestMethod.PUT)
     public ResponseEntity<String> update(@RequestParam Integer id, @RequestBody PacketStatus updatedPacketStatus) {
-        Optional<PacketStatus> existingPacketStatusOpt = packetstatusRepository.findById(id);
+           Optional<PacketStatus> existingPacketStatusOpt = packetstatusRepository.findById(id);
         if (existingPacketStatusOpt.isPresent()) {
             PacketStatus existingPacketStatus = existingPacketStatusOpt.get();
             existingPacketStatus.setName(updatedPacketStatus.getName());
