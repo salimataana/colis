@@ -8,7 +8,7 @@ NB : All tasks about this project are done by me.
 - Database initialization in MySQL : 5minutes
 
 
-### october(no finish)
+### october 2024
 Models
 
 -Packet
@@ -17,7 +17,7 @@ Models
 -Geolocation
 -Role
 
-### october (no finish)
+### october 2024
 Controllers
 
 
@@ -32,8 +32,9 @@ Controllers
 ###  26 october 2024(no finish)
 Updated all controllers
 
-###  october (no finish)
-Repository 
+###  october 2024
+Repository  
+
 
 -PacketRepository
 -PacketStatusRepository
@@ -78,4 +79,10 @@ update view home
 ### 30 october 2024
 update controllers
 update view of the templates
+
+### 01 november 2024
+Adding home page image : 5 minutes
+update view of the templates createPacket,createPacketStatus,indexPacketStatus,indexPacket,trackingpacket,geolocationdelivery
+update controllers DeliveryManagementController,PacketController,PacketStatusController
+update models Packet,PacketStatus
 

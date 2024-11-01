@@ -21,9 +21,8 @@ public class PacketStatus {
     private String description;
 
 
-    //@CreatedDate
-   // @Column(name = "created_at", nullable = false, updatable = false)
-   // private Date createdAt;
+
+    public Date created_at;
 
     @ManyToOne
     @JoinColumn(name = "packet_id")

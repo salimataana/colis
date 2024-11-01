@@ -11,7 +11,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-        }
+         }
         header {
             background-color:  #6c757d;
             color: white;
@@ -80,17 +80,18 @@
             <thead>
             <tr>
                 <th>Tracking Number</th>
-                <th>Name</th>
+                <th>Status</th>
                 <th>Description</th>
                 <th>Date </th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td id="trackingNumber"></td>
-                <td id="name"></td>
-                <td id="description"></td>
-                <td id="Date"></td>
+            <tr th:each="packetstatus : ${packetStatuses}">
+                <td th:text="${packetstatus.id}"></td>
+                <td th:text="${packetstatus.name}"></td>
+                <td th:text="${packetstatus.description}"></td>
+               <!--   <td th:text="${#dates.format(packetstatus.create_at, 'yyyy-MM-dd')}"></td> -->
+                 <!-- <td th:text="${packetstatus.createAt}"></td> -->
             </tr>
             </tbody>
         </table>

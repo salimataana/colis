@@ -45,13 +45,13 @@ public class PacketController {
     @RequestMapping(value = "/packet", method = RequestMethod.POST)
     public ModelAndView store(@RequestParam("name") String name, @RequestParam("address_packet") String address_packet,
                               @RequestParam("weight") Double weight,
-                              @RequestParam("date_depart") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date_depart) {
+                              @RequestParam("date_creation") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date_creation) {
         System.out.println("je suis dans store");
         Packet packet = new Packet();
         packet.setName(name);
         packet.setWeight(weight);
         packet.setAddress_packet(address_packet);
-        packet.setDate_depart(date_depart);
+        packet.setDate_creation(date_creation);
         packet.setUsers_deliver(this.getRandomUserForDelivery());
         packetRepository.save(packet);
         return new ModelAndView("redirect:/packet");
@@ -70,7 +70,7 @@ public class PacketController {
             Packet existingPacket = existingPacketOpt.get();
             existingPacket.setName(updatedPacket.getName());
             existingPacket.setAddress_packet(updatedPacket.getAddress_packet());
-            existingPacket.setDate_depart(updatedPacket.getDate_depart());
+            existingPacket.setDate_creation(updatedPacket.getDate_creation());
             existingPacket.setDate_arrival(updatedPacket.getDate_arrival());
             existingPacket.setWeight(updatedPacket.getWeight());
             packetRepository.save(existingPacket);

@@ -25,7 +25,7 @@ public class Packet {
     private String name;
     private Double weight;
     private String address_packet;
-    private Date date_depart;
+    private Date date_creation;
 
     @Column(nullable = true)
     private Date date_arrival;

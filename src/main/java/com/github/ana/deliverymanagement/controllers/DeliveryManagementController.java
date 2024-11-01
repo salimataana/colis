@@ -6,6 +6,8 @@ import com.github.ana.deliverymanagement.repository.PacketRepository;
 import com.github.ana.deliverymanagement.repository.PacketStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,9 +28,10 @@ public class DeliveryManagementController {
         return "home";
     }
     @RequestMapping(value="/trackingpacket/{id}",method= RequestMethod.GET)
-    public String getTrackingPacket(Integer id){
+    public String getTrackingPacket(@PathVariable("id") Integer id, Model model){
         Optional<Packet> packet = repository.findById(id);
         List <PacketStatus> packetStatuses = packet.get().getPacketstatus();
+        model.addAttribute("packetStatuses", packetStatuses);
         return "trackingpacket";
     }
 }
