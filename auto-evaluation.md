@@ -8,39 +8,40 @@ NB : All tasks about this project are done by me.
 - Database initialization in MySQL : 5minutes
 
 
-### october 2024
+### 12 october 2024 02 november 2024 with updates 
 Models
 
--Packet
--PacketStatus
--User
--Geolocation
--Role
+-Packet : 10 minutes
+-PacketStatus  : 5 minutes
+-User  : 5 minutes
+-Geolocation  : 5 minutes
+-Role : 5 minutes
 
-### october 2024
+### 12 october 2024 Finish 02 november 2024 with updates and adding the controllers
 Controllers
 
 
--DeliveryManagementController
--Packet
--PacketStatus
--User
--Geolocation
--Role
+-DeliveryManagementController : 20 minutes
+-Packet : 30 minutes
+-PacketStatus : 20 minutes
+-User : 20 minutes
+-Geolocation : 20 minutes
+-Role : 20 minutes
+-AccountController : 20 minutes
 
 
-###  26 october 2024(no finish)
+###  26 october 2024
 Updated all controllers
 
-###  october 2024
+### 14 october 2024 
 Repository  
 
 
--PacketRepository
--PacketStatusRepository
--UserRepository
--GeolocationRepository
--RoleRepository
+-PacketRepository : 3 minutes
+-PacketStatusRepository  : 3 minutes
+-UserRepository  : 3 minutes
+-GeolocationRepository  : 3 minutes
+-RoleRepository  : 3 minutes
 
 
 ## Templates
@@ -86,3 +87,7 @@ update view of the templates createPacket,createPacketStatus,indexPacketStatus,i
 update controllers DeliveryManagementController,PacketController,PacketStatusController
 update models Packet,PacketStatus
 
+### 02 november 2024
+ 
+I added the Configuration part who contains (SecurityConfig,Controller(AccountController),RegisterDto,UserService,
+and templates login(not to use) and templates register) : 2 hours

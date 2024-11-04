@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +36,7 @@
     <nav>
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link text-white" th:href="@{/home}">Home</a>
+                <a class="nav-link text-white" th:href="@{/}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" th:href="@{/packet/create}">Create a Packet</a>
@@ -45,13 +45,16 @@
                 <a class="nav-link text-white" th:href="@{/packet}">List of Packet</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" th:href="@{/trackingpacket}">Track a Packet</a>
+                <a class="nav-link text-white" th:href="@{/packetstatus/create}">Create PacketStatus</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" th:href="@{/login}">Authentification</a>
+            <li class="nav-item" sec:authorize="!isAuthenticated()">
+                <a class="nav-link text-white" th:href="@{/login}">Login</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="!isAuthenticated()">
                 <a class="nav-link text-white" th:href="@{/register}">Create an Account</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link text-white" th:href="@{/logout}">Logout</a>
             </li>
         </ul>
     </nav>
@@ -78,6 +81,12 @@
         <div class="form-group">
             <label for="address_packet">Packet Address:</label>
             <input type="text" class="form-control" id="address_packet" name="address_packet" required placeholder="Enter packet address">
+        </div>
+
+        <!-- Field for packet code postal -->
+        <div class="form-group">
+            <label for="code_postal">Packet Code Postal:</label>
+            <input type="number" class="form-control" id="code_postal" name="code_postal" required placeholder="Enter packet code posatl">
         </div>
 
         <!-- Field for departure date -->
