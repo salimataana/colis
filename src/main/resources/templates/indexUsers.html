@@ -22,12 +22,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="user : ${users}">
-        <td th:text="${user.id}"></td>
-        <td th:text="${user.name}"></td>
-        <td th:text="${user.email}"></td>
-        <td th:text="${user.address_user}"></td>
-        <td th:text="${user.phoneNumber}"></td>
+    <tr th:each="users : ${users}">
+        <td th:text="${users.id}"></td>
+        <td th:text="${users.name}"></td>
+        <td th:text="${users.email}"></td>
+        <td th:text="${users.address_user}"></td>
+        <td th:text="${users.phoneNumber}"></td>
     </tr>
     </tbody>
 </table>

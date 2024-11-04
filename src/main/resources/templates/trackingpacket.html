@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,13 +60,19 @@
             <a class="nav-link text-white" th:href="@{/packet/create}">Create a Packet</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" th:href="@{/trackingpacket}">Track a Packet</a>
+            <a class="nav-link text-white" th:href="@{/packetstatus/create}">Create PacketStatus</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/packet}">List of Packet</a>
+        </li>
+        <li class="nav-item" sec:authorize="!isAuthenticated()">
             <a class="nav-link text-white" th:href="@{/login}">Login</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" sec:authorize="!isAuthenticated()">
             <a class="nav-link text-white" th:href="@{/register}">Create an Account</a>
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+            <a class="nav-link text-white" th:href="@{/logout}">Logout</a>
         </li>
     </ul>
 </nav>
@@ -90,7 +96,7 @@
                 <td th:text="${packetstatus.id}"></td>
                 <td th:text="${packetstatus.name}"></td>
                 <td th:text="${packetstatus.description}"></td>
-               <!--   <td th:text="${#dates.format(packetstatus.create_at, 'yyyy-MM-dd')}"></td> -->
+                <td th:text="${#dates.formatISO(packetstatus.created_at)}"></td>
                  <!-- <td th:text="${packetstatus.createAt}"></td> -->
             </tr>
             </tbody>

@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import java.util.Date;
 
 
 @AllArgsConstructor
@@ -29,5 +27,5 @@ public class Geolocation {
 
     @ManyToOne
     @JoinColumn(name = "users_id")
-    private User users;
+    private Users users;
 }

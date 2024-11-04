@@ -1,11 +1,9 @@
 package com.github.ana.deliverymanagement.models;
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,6 +23,7 @@ public class Packet {
     private String name;
     private Double weight;
     private String address_packet;
+    private Integer code_postal;
     private Date date_creation;
 
     @Column(nullable = true)
@@ -32,17 +31,13 @@ public class Packet {
 
 
 
-   // @CreatedDate
-   // @Column(name = "created_at", nullable = false, updatable = false)
-   // private Date createdAt;
-
     @ManyToOne
     @JoinColumn(name = "users_id")
-    private User users;
+    private Users users;
 
     @ManyToOne
     @JoinColumn(name = "users_deliver_id")
-    private User users_deliver;
+    private Users users_deliver;
 
 
     @OneToMany(mappedBy = "packet", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -1,6 +1,6 @@
 package com.github.ana.deliverymanagement.controllers;
 import com.github.ana.deliverymanagement.models.Packet;
-import com.github.ana.deliverymanagement.models.User;
+import com.github.ana.deliverymanagement.models.Users;
 import com.github.ana.deliverymanagement.repository.PacketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,7 +19,7 @@ public class PacketController {
     @Autowired
     private PacketRepository packetRepository;
 
-    private List<User> users_deliver;
+    private List<Users> users_deliver;
 
     public PacketController() {
         this.users_deliver = new ArrayList<>();
@@ -45,12 +45,14 @@ public class PacketController {
     @RequestMapping(value = "/packet", method = RequestMethod.POST)
     public ModelAndView store(@RequestParam("name") String name, @RequestParam("address_packet") String address_packet,
                               @RequestParam("weight") Double weight,
+                              @RequestParam("code_postal") Integer code_postal,
                               @RequestParam("date_creation") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date_creation) {
         System.out.println("je suis dans store");
         Packet packet = new Packet();
         packet.setName(name);
         packet.setWeight(weight);
         packet.setAddress_packet(address_packet);
+        packet.setCode_postal(code_postal);
         packet.setDate_creation(date_creation);
         packet.setUsers_deliver(this.getRandomUserForDelivery());
         packetRepository.save(packet);
@@ -71,7 +73,7 @@ public class PacketController {
             existingPacket.setName(updatedPacket.getName());
             existingPacket.setAddress_packet(updatedPacket.getAddress_packet());
             existingPacket.setDate_creation(updatedPacket.getDate_creation());
-            existingPacket.setDate_arrival(updatedPacket.getDate_arrival());
+            existingPacket.setCode_postal(updatedPacket.getCode_postal());
             existingPacket.setWeight(updatedPacket.getWeight());
             packetRepository.save(existingPacket);
             return ResponseEntity.ok("Packet updated successfully.");
@@ -86,7 +88,7 @@ public class PacketController {
         return "redirect:/packet";
     }
 
-    public User getRandomUserForDelivery() {
+    public Users getRandomUserForDelivery() {
         if (users_deliver == null || users_deliver.isEmpty()) {
             return null; //
         }

@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,21 +14,27 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
+@Table(name = "users")
 
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    private String name;
+
+    private String firstName;
+    private String lastName;
+
+    @Column(unique = true, nullable = false)
     private String email;
-    private String address_user;
-    private String phoneNumber;
+
+    private String phone ;
+    private String address;
+    private String password;
+    private String role;
+    private Date createdAt;
 
 
-    //@CreatedDate
-   // @Column(name = "created_at", nullable = false, updatable = false)
-    //private Date createdAt;
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Role> roles = new ArrayList<>();

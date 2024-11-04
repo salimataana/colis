@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org"  xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,16 +38,19 @@
         <a class="nav-link text-white" th:href="@{/packet/create}">Create a Packet</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link text-white" th:href="@{/packetstatus/create}">Create PacketStatus</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link text-white" th:href="@{/packet}">List of Packet</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" th:href="@{/trackingpacket}">Track a Packet</a>
+      <li class="nav-item" sec:authorize="!isAuthenticated()">
+        <a class="nav-link text-white" th:href="@{/login}">Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" th:href="@{/login}">Authentification</a>
-      </li>
-      <li class="nav-item">
+      <li class="nav-item" sec:authorize="!isAuthenticated()">
         <a class="nav-link text-white" th:href="@{/register}">Create an Account</a>
+      </li>
+      <li class="nav-item" sec:authorize="isAuthenticated()">
+        <a class="nav-link text-white" th:href="@{/logout}">Logout</a>
       </li>
     </ul>
   </nav>
@@ -64,6 +67,7 @@
       <th>Name</th>
       <th>Weight</th>
       <th>Address</th>
+      <th>Code Postal</th>
       <th>Creation Date</th>
       <th>Status Link</th>
     </tr>
@@ -74,6 +78,7 @@
       <td th:text="${packet.name}"></td>
       <td th:text="${packet.weight}"></td>
       <td th:text="${packet.address_packet}"></td>
+      <td th:text="${packet.code_postal}"></td>
       <td th:text="${#dates.format(packet.date_creation, 'yyyy-MM-dd')}"></td>
       <td><a th:href="@{'/trackingpacket/' + ${packet.id}}">link for track</a></td>
     </tr>

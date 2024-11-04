@@ -22,7 +22,7 @@ public class DeliveryManagementController {
     @Autowired
     PacketRepository repository;
 
-    @RequestMapping(value="/home",method= RequestMethod.GET)
+    @RequestMapping(value="/",method= RequestMethod.GET)
     public String getHome(){
 
         return "home";
@@ -35,3 +35,6 @@ public class DeliveryManagementController {
         return "trackingpacket";
     }
 }
+
+
+
