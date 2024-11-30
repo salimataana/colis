@@ -30,7 +30,7 @@ Packet Tracking Page
 ### what doesn't work
 
 Allocate a Packet to delivery User but it is in Progress
-Google Maps Page to show Packet localisation  but it is in Progress
+Google Maps Page to show Packet localisation but it is in Progress
 
 ### Difficulties
 

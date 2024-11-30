@@ -21,9 +21,9 @@ public class SecurityConfig {
                         .anyRequest() .authenticated()
                 )
                 .formLogin(form-> form
-                        .defaultSuccessUrl("/", true)
+                        .defaultSuccessUrl("/home", true)
                 )
-                .logout(config -> config.logoutSuccessUrl("/"))
+                .logout(config -> config.logoutSuccessUrl("/home"))
                 .build();
     }
 
