@@ -1,4 +1,5 @@
 package com.github.ana.deliverymanagement.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,8 +24,7 @@ public class PacketStatus {
 
 
     public Date created_at;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,optional= false)
     @JoinColumn(name = "packet_id")
     private Packet packet;
 

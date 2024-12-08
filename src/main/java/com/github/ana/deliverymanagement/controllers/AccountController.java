@@ -1,6 +1,4 @@
 package com.github.ana.deliverymanagement.controllers;
-
-
 import com.github.ana.deliverymanagement.dto.RegisterDto;
 import com.github.ana.deliverymanagement.models.Users;
 import com.github.ana.deliverymanagement.repository.UserRepository;
@@ -14,7 +12,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.Date;
 
 @Controller

@@ -1,4 +1,5 @@
 package com.github.ana.deliverymanagement.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,17 +31,18 @@ public class Packet {
     private Date date_arrival;
 
 
-
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY,optional= false)
     @JoinColumn(name = "users_id")
     private Users users;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY,optional= false)
     @JoinColumn(name = "users_deliver_id")
     private Users users_deliver;
 
-
-    @OneToMany(mappedBy = "packet", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @OneToMany(mappedBy = "packet", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
     private List<PacketStatus> packetstatus = new ArrayList<>();
 
 
