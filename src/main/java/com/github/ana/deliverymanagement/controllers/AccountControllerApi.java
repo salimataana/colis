@@ -20,6 +20,7 @@ public class AccountControllerApi {
     @Autowired
     private UserRepository userRepository;
 
+    @CrossOrigin("http://localhost:5173")
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterDto registerDto, BindingResult result) {
 
